@@ -1,0 +1,84 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>com.massive.rest</groupId>
+	<artifactId>resources</artifactId>
+	<packaging>war</packaging>
+	<version>0.1</version>
+	<name>Mass.ive RESTful API Server</name>
+	<url>http://none.yet.com</url>
+	<repositories>
+		<repository>
+			<!-- The Morphia functionality will soon be merged into the MongoDB driver, but in the mean-time, we use a custom repo, according to: http://stackoverflow.com/questions/8655479/the-pom-for-com-google-code-morphiamorphiajar1-00-snapshot-is-missing-no-dep -->
+			<id>morphia</id>
+			<url>http://morphia.googlecode.com/svn/mavenrepo/</url>
+		</repository>
+	</repositories>
+	<dependencies>
+		<dependency>
+			<groupId>com.sun.jersey</groupId>
+			<artifactId>jersey-server</artifactId>
+			<version>1.15</version>
+		</dependency>
+		<dependency>
+			<groupId>com.sun.jersey</groupId>
+			<artifactId>jersey-servlet</artifactId>
+			<version>1.15</version>
+		</dependency>
+		<dependency>
+			<groupId>org.mongodb</groupId>
+			<artifactId>mongo-java-driver</artifactId>
+			<version>2.9.3</version>
+		</dependency>
+		<dependency>
+			<!-- The Morphia functionality will soon be merged into the MongoDB driver, but in the mean-time, we use a custom repo, according to: http://stackoverflow.com/questions/8655479/the-pom-for-com-google-code-morphiamorphiajar1-00-snapshot-is-missing-no-dep -->
+			<groupId>com.google.code.morphia</groupId>
+			<artifactId>morphia</artifactId>
+			<version>0.99.1-SNAPSHOT</version>
+		</dependency>
+		<dependency>
+			<!-- GSon is an POJO-to-JSON mapper that we are using to seamlessly return JSON strings while working with regular Java objects -->
+			<groupId>com.google.code.gson</groupId>
+			<artifactId>gson</artifactId>
+			<version>2.2.2</version>
+			<scope>compile</scope>
+		</dependency>
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<version>3.8.1</version>
+			<scope>test</scope>
+		</dependency>
+	</dependencies>
+	<build>
+		<pluginManagement>
+			<plugins>
+				<plugin>
+					<!-- Set the compiler explictly to Java 1.6: http://maven.apache.org/plugins/maven-compiler-plugin/examples/set-compiler-source-and-target.html -->
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-compiler-plugin</artifactId>
+					<version>3.0</version>
+					<configuration>
+						<source>1.6</source>
+						<target>1.6</target>
+					</configuration>
+				</plugin>
+				<plugin>
+					<!-- This plugin allows Maven to interact with the local Tomcat server. More information: http://tomcat.apache.org/maven-plugin-2.0/ -->
+					<groupId>org.apache.tomcat.maven</groupId>
+					<artifactId>tomcat7-maven-plugin</artifactId>
+					<version>2.0</version>
+					<configuration>
+						<server>localhost</server>
+					</configuration>
+				</plugin>
+				<plugin>
+					<!-- This plugin provides goals to allow the execution of Java code directly (for utility classes, etc..) outside of the Tomcat server context. -->
+					<groupId>org.codehaus.mojo</groupId>
+					<artifactId>exec-maven-plugin</artifactId>
+					<version>1.2.1</version>
+				</plugin>
+			</plugins>
+		</pluginManagement>
+		<finalName>resources</finalName>
+	</build>
+</project>

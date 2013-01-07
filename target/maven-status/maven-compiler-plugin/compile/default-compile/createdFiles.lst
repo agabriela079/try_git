@@ -1,0 +1,12 @@
+com\massive\models\Product.class
+com\massive\models\Category.class
+com\massive\models\Vendor.class
+com\massive\models\Rack.class
+com\massive\models\Shelf.class
+com\massive\resources\Resource.class
+com\massive\resources\CategoryResource.class
+com\massive\misc\SampleDataInsert.class
+com\massive\resources\VendorResource.class
+com\massive\providers\GsonMessageProvider.class
+com\massive\resources\HelloWorld.class
+com\massive\resources\RackResource.class
